@@ -31,7 +31,7 @@
             <a href="M11006-2.php">Exercice 2 : Affichage de voitures en liste</a>
         </div>
         <div>
-            <a href="M11006-3.php">Exercice 3 : Mini-App de voitures de sport</a>
+            <a href="M11006-3Salle.php">Exercice 3 : Mini-App de voitures de sport</a>
         </div>
     </div>
 </body>

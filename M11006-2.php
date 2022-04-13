@@ -2,10 +2,10 @@
 
 $cars = [
     "Audi"      => "R8",
-    "BMW"   => "M3",
-    "Bugatti" => "Veyron",
-    "Ferrari" => "F430",
-    "Porsche" => "Cayman",
+    "BMW"       => "M3",
+    "Bugatti"   => "Veyron",
+    "Ferrari"   => "F430",
+    "Porsche"   => "Cayman",
 ];
 
 ?>
@@ -24,7 +24,9 @@ $cars = [
         <a href="/">Retour à l'index</a>
     </div>
     <ul>
-        <li></li>
+        <?php foreach ($cars as $brand => $model) {
+            echo "<li>$brand $model</li>";
+        } ?>
     </ul>
 </body>
 
