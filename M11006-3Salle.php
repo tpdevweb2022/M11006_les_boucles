@@ -52,59 +52,75 @@ $cars = [
     <title>Mini-App Cars</title>
     <style>
         .all_cars {
-            max-width: 660px;
+            max-width: 960px;
             margin: auto;
-            text-align: left;
         }
 
-        .car {
-            margin: 2rem auto;
-            border: 1px solid #ccc;
-            border-radius: 12px;
-            background-color: #ececec;
+        .one_car {
+            margin: 3rem auto;
             display: flex;
-            gap: 2rem;
+            border: 1px solid black;
+            border-radius: 15px;
         }
 
-        .infos {
-            padding: 1rem;
+        .one_car>div {
+            width: 50%;
         }
 
-        img {
-            max-width: 300px;
+        .infos_car {
+            padding: 2rem;
+            background-color: #ececec;
+            border-radius: 0 15px 15px 0;
+        }
+
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+        }
+
+        .img_car {
+            width: 100%;
+            height: 100%;
+            border-radius: 14px 0 0 14px;
             object-fit: cover;
-            border-radius: 12px 0 0 12px;
-        }
-
-        @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-
-        body {
-            font-family: 'Nunito', sans-serif;
         }
     </style>
 </head>
 
 <body>
 
+
     <div>
         <a href="/">Retour à l'index</a>
     </div>
 
     <div class="all_cars">
-        <?php
-        array_multisort(array_column($cars, 'price'), SORT_ASC, $cars);
-        foreach ($cars as $car) : ?>
-            <div class="car">
-                <img src='<?= $car["img"] ?>' alt='<?= $car["img"] ?>' class="img" />
-                <div class="infos">
-                    <h2><?= $car["brand"] ?> <?= $car["model"] ?></h2>
-                    <p>Poids : <?= $car["weight"] ?> kg</p>
-                    <p>Puissance : <?= $car["power"] ?> ch</p>
-                    <p>Prix : <?= number_format($car["price"], 0, ",", " ") ?> €</p>
-                    <p>Rapport poids/puissance : <?= number_format($car["weight"] / $car["power"], 2, ",", " ") ?> kg / ch</p>
+        <!-- On boucle nos résultats -->
+        <?php foreach ($cars as $car) { ?>
+            <div class="one_car">
+                <div>
+                    <img src='<?= $car['img'] ?>' class="img_car" alt='<?= $car["model"] ?> <?= $car["brand"]  ?>'>
                 </div>
+                <div class="infos_car">
+                    <h2><?= $car["brand"]  ?> <?= $car["model"] ?></h2>
+                    <div class="flex-between">
+                        <span>Puissance : </span>
+                        <span><?= $car['power'] ?> chevaux</span>
+                    </div>
+                    <div class="flex-between">
+                        <span>Prix : </span>
+                        <span><?= $car['price'] ?> €</span>
+                    </div>
+                    <div class="flex-between">
+                        <span>Masse : </span>
+                        <span><?= $car['weight'] ?> kg</span>
+                    </div>
+                </div>
+
             </div>
-        <?php endforeach; ?>
+        <?php }; ?>
+        <!-- Fin de la boucle -->
     </div>
 </body>
 
